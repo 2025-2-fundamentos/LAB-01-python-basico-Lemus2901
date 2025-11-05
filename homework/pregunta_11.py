@@ -16,3 +16,24 @@ def pregunta_11():
 
 
     """
+
+    with open("./files/input/data.csv", "r") as f:
+        diccionario = dict()
+        sequence = []
+        for line in f: 
+            listLetras = line.split('\t')[3].split(',')
+            valor = line.split('\t')[1]
+            for letra in listLetras:
+                sequence.append( (letra, int(valor)) )
+
+        sequence.sort()
+        for letra, valor in sequence:
+            if letra not in diccionario:
+                diccionario[letra] = valor
+                continue
+            diccionario[letra] += valor
+
+            
+    return diccionario    
+
+print(pregunta_11())

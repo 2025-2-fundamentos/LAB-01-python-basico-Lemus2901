@@ -15,3 +15,17 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    
+    with open("./files/input/data.csv", "r") as f:
+        sequence = []
+        for line in f:
+            sequence.append( (line.split("\t")[0], int(line.split("\t")[1]) ))
+        sequence.sort()
+        resultado = []
+        for letra, valor in sequence:
+            if resultado and resultado[-1][0] == letra : 
+                resultado[-1] = (letra, resultado[-1][1] + valor)
+            else:
+                resultado.append((letra, valor))
+        
+        return resultado

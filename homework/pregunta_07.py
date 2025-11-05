@@ -25,3 +25,20 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+
+    with open("./files/input/data.csv", "r") as f:
+        sequence = []
+        for line in f:
+            sequence.append( ( line.split("\t")[0], int(line.split("\t")[1]) ))
+        sequence.sort(key=lambda x : x[1])
+        resultado = []
+        for letra, valor in sequence:
+            if resultado and resultado[-1][0] == valor : 
+                resultado[-1][1].append(letra)
+                
+            else:
+
+                resultado.append((valor, list(letra) ))
+        return resultado
+
+print(pregunta_07())

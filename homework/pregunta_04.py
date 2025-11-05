@@ -26,3 +26,17 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    with open("./files/input/data.csv", "r") as f:
+        sequence = []
+        for line in f:
+            sequence.append((line.split("\t")[2].split("-")[1], 1))
+        sequence.sort()
+        resultado = []
+        for letra, valor in sequence:
+            if resultado and resultado[-1][0] == letra : 
+                resultado[-1] = (letra, resultado[-1][1] + valor)
+            else:
+                resultado.append((letra, valor))
+        
+        return resultado
+    

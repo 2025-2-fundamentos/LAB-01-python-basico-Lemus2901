@@ -6,6 +6,9 @@ utilizar pandas, numpy o scipy.
 """
 
 
+import os
+
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -14,3 +17,10 @@ def pregunta_01():
     214
 
     """
+
+    with open("./files/input/data.csv", "r") as f:
+        total = 0
+        for line in f:
+            total += int(line.split("\t")[1])
+        return total
+print(pregunta_01())
